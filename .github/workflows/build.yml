@@ -12,7 +12,7 @@ jobs:
     permissions:
       id-token: write   # enable GitHub OIDC token issuance for this job
 
-    runs-on: windows-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         dotnet-version: ['4.8.1','10.0.x']
@@ -42,7 +42,7 @@ jobs:
       # - name: Restore Strong Name Key
         # run: |
         #   echo "${{ secrets.STRONG_NAME_KEY }}" | base64 --decode > NumericUpDownLibKeyPair.snk
-        
+
       - name: Restore Strong Name Key
         run: |
           $base64String = "${{ secrets.STRONG_NAME_KEY }}"
