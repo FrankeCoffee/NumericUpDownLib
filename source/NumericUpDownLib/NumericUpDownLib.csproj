@@ -1,20 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>net4;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net481;net10.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.4.0.0</Version>
-    <AssemblyVersion>3.4.0.0</AssemblyVersion>
-    <FileVersion>3.4.0.0</FileVersion>
+    <Version>3.5.0.0</Version>
+    <AssemblyVersion>3.5.0.0</AssemblyVersion>
+    <FileVersion>3.5.0.0</FileVersion>
     <Company>Open Source</Company>
     <Product>NumericUpDownLib</Product>
-    <Copyright>2013-2023</Copyright>
+    <Copyright>2013-2026</Copyright>
     <Description>Provides a numeric up down WPF control that can be used to edit (integer, byte, decimal, double, float, short and many more) values with a textbox and/or up/down arrow (repeat) buttons. Editing can be based on input via mouse wheel, mouse drag, cursor keys, or text editing.</Description>
-    <PackageProjectUrl>https://github.com/Dirkster99/NumericUpDownLib</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Dirkster99/NumericUpDownLib</RepositoryUrl>
-    <PackageId>Dirkster.NumericUpDownLib</PackageId>
+    <PackageProjectUrl>https://github.com/FrankeCoffee/NumericUpDownLib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/FrankeCoffee/NumericUpDownLib</RepositoryUrl>
+    <PackageId>FrankeCsTools.NumericUpDownLib</PackageId>
     <Authors>https://github.com/Dirkster99/NumericUpDownLib</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>numericupdown numeric up down integer float double percentage increment decrement custom wpf control mvvm c# .net metro black light themed control library</PackageTags>
@@ -22,6 +22,12 @@
     <NeutralLanguage>en</NeutralLanguage>
     <PackageIcon>SyncArrow_64x.png</PackageIcon>
   </PropertyGroup>
+
+  <PropertyGroup Condition="Exists('NumericUpDownLibKeyPair.snk')">
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>NumericUpDownLibKeyPair.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <None Include="images/SyncArrow_64x.png" Pack="true" PackagePath="" />
