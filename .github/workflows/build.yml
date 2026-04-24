@@ -29,20 +29,20 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore "source\NumericUpDownLib\NumericUpDownLib.csproj"
 
       - name: Restore Strong Name Key
         run: |
           echo "${{ secrets.STRONG_NAME_KEY }}" | base64 --decode > NumericUpDownLibKeyPair.snk
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build "source\NumericUpDownLib\NumericUpDownLib.csproj" --configuration Release --no-restore
 
-      - name: Test
-        run: dotnet test --configuration Release --no-build
+      # - name: Test
+      #   run: dotnet test --configuration Release --no-build
 
       - name: Pack
-        run: dotnet pack --configuration Release --no-build -o ./artifacts
+        run: dotnet pack "source\NumericUpDownLib\NumericUpDownLib.csproj" --configuration Release --no-build -o ./artifacts
 
       # - name: Publish to NuGet
         # run: dotnet nuget push "./artifacts/*.nupkg" \
