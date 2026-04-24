@@ -1,9 +1,11 @@
 ﻿name: Build & Publish NuGet
 
-on:
-  push:
-    tags:
-      - 'v*'
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+
+on: [push]
 
 jobs:
   build:
@@ -11,6 +13,9 @@ jobs:
       id-token: write   # enable GitHub OIDC token issuance for this job
 
     runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet-version: ['4.8.1','10.0.x']
 
     steps:
       # Get a short-lived NuGet API key
@@ -21,19 +26,23 @@ jobs:
           user: ${{ secrets.NUGET_USER }} # Recommended: use a secret like ${{ secrets.NUGET_USER }} for your nuget.org username (profile name), NOT your email address
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Setup .NET
+      - name: Setup .NET ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Display .NET version
+        run: dotnet --version
 
       - name: Restore
-        run: dotnet restore "source\NumericUpDownLib\NumericUpDownLib.csproj"
+        run: dotnet restore source\NumericUpDownLib\NumericUpDownLib.csproj
 
       # - name: Restore Strong Name Key
         # run: |
         #   echo "${{ secrets.STRONG_NAME_KEY }}" | base64 --decode > NumericUpDownLibKeyPair.snk
+        
       - name: Restore Strong Name Key
         run: |
           $base64String = "${{ secrets.STRONG_NAME_KEY }}"
@@ -41,13 +50,13 @@ jobs:
           [System.IO.File]::WriteAllBytes("NumericUpDownLibKeyPair.snk", $bytes)
 
       - name: Build
-        run: dotnet build "source\NumericUpDownLib\NumericUpDownLib.csproj" --configuration Release --no-restore
+        run: dotnet build source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-restore
 
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
 
       - name: Pack
-        run: dotnet pack "source\NumericUpDownLib\NumericUpDownLib.csproj" --configuration Release --no-build -o ./artifacts
+        run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
 
       # - name: Publish to NuGet
         # run: dotnet nuget push "./artifacts/*.nupkg" \
