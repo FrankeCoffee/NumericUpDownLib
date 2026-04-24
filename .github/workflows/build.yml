@@ -12,10 +12,14 @@ jobs:
     permissions:
       id-token: write   # enable GitHub OIDC token issuance for this job
 
-    runs-on: windows-2022
+    runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: ['4.8.1','10.0.x']
+        dotnet:
+          - version: '4.8.1'
+            type: framework
+          - version: '10.0.x'
+            type: sdk
 
     steps:
       # Get a short-lived NuGet API key
@@ -28,10 +32,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup .NET ${{ matrix.dotnet-version }}
+      - name: Setup .NET ${{ matrix.dotnet.version }} SDK
+        if: matrix.dotnet.type == 'sdk'
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ matrix.dotnet.version }}
+          # include-prerelease: true
+
+          # MS Build + .NET Framework targeting support
+      - name: Setup MSBuild
+        if: matrix.dotnet.type == 'framework'
+        uses: microsoft/setup-msbuild@v2
+        # with:
+        #   vs-version: 'latest'
 
       - name: Display .NET version
         run: dotnet --version
