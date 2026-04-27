@@ -47,6 +47,7 @@ jobs:
         #   vs-version: 'latest'
 
       - name: Display .NET version
+        if: matrix.dotnet.type == 'sdk'
         run: dotnet --version
 
       - name: Restore
@@ -68,13 +69,16 @@ jobs:
 
       - name: Build (.NET Framework)
         if: matrix.dotnet.type == 'framework'
-        run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release"
+        run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release" /t:pack /p:TargetFrameworkVersion=v4.8.1
 
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
 
-      - name: Pack
+      - name: Pack (.NET Core)
         run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
+
+      # - name: Pack (.NET Framework)
+      #   run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
 
       # - name: Publish to NuGet
         # run: dotnet nuget push "./artifacts/*.nupkg" \
