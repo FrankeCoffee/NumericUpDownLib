@@ -80,8 +80,8 @@ jobs:
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
 
-      - name: Pack (.NET Core)
-        run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build
+     # - name: Pack (.NET Core)
+     #   run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build
         #run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
 
       # - name: Pack (.NET Framework)
