@@ -62,8 +62,13 @@ jobs:
           $bytes = [Convert]::FromBase64String($base64String)
           [System.IO.File]::WriteAllBytes("NumericUpDownLibKeyPair.snk", $bytes)
 
-      - name: Build
+      - name: Build (.NET Core)
+        if: matrix.dotnet.type == 'sdk'
         run: dotnet build source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-restore
+
+      - name: Build (.NET Framework)
+        if: matrix.dotnet.type == 'framework'
+        run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release"
 
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
