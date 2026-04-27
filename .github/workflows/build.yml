@@ -81,7 +81,8 @@ jobs:
       #   run: dotnet test --configuration Release --no-build
 
       - name: Pack (.NET Core)
-        run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
+        run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build
+        #run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
 
       # - name: Pack (.NET Framework)
       #   run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
@@ -93,4 +94,5 @@ jobs:
 
         # Push the package
       - name: NuGet push
-        run: dotnet nuget push "./artifacts/***.NumericUpDownLib.3.5.1.nupkg" --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push nupkg/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        # run: dotnet nuget push "./artifacts/***.NumericUpDownLib.3.5.1.nupkg" --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
