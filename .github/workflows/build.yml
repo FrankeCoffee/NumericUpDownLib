@@ -69,7 +69,7 @@ jobs:
 
       - name: Build (.NET Framework)
         if: matrix.dotnet.type == 'framework'
-        run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release" /t:pack /p:TargetFrameworkVersion=v4.8.1
+        run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release" /t:pack
 
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
