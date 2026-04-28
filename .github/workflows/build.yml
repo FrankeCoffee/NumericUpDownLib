@@ -64,7 +64,7 @@ jobs:
         run: |
           $base64String = "${{ secrets.STRONG_NAME_KEY }}"
           $bytes = [Convert]::FromBase64String($base64String)
-          [System.IO.File]::WriteAllBytes("NumericUpDownLibKeyPair.snk", $bytes)
+          [System.IO.File]::WriteAllBytes("source\NumericUpDownLib\NumericUpDownLibKeyPair.snk", $bytes)
 
       - name: Build
         run: dotnet build source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-restore
