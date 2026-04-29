@@ -18,8 +18,8 @@ jobs:
         dotnet:
           - version: '4.8.1'
             type: framework
-          # - version: '10.0.x'
-          #   type: sdk
+          - version: '10.0.x'
+            type: sdk
 
     steps:
       # Get a short-lived NuGet API key
