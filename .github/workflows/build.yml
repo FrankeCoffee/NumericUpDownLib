@@ -13,13 +13,6 @@ jobs:
       id-token: write   # enable GitHub OIDC token issuance for this job
 
     runs-on: windows-latest
-    # strategy:
-    #   matrix:
-    #     dotnet:
-    #       - version: '4.8.1'
-    #         type: framework
-    #       - version: '10.0.x'
-    #         type: sdk
 
     steps:
       # Get a short-lived NuGet API key
@@ -32,33 +25,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: setup .NET ${{ matrix.dotnet.version }} SDK
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
 
-      # - name: Setup .NET ${{ matrix.dotnet.version }} SDK
-      #   if: matrix.dotnet.type == 'sdk'
-      #   uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: ${{ matrix.dotnet.version }}
-      #     # include-prerelease: true
-
-      #     # MS Build + .NET Framework targeting support
-      # - name: Setup MSBuild
-      #   if: matrix.dotnet.type == 'framework'
-      #   uses: microsoft/setup-msbuild@v2
-      #   # with:
-      #   #   vs-version: 'latest'
-
-      # - name: Display .NET version
-      #   if: matrix.dotnet.type == 'sdk'
-      #   run: dotnet --version
+      - name: Display .NET version
+        run: dotnet --version
 
       - name: Restore
         run: dotnet restore source\NumericUpDownLib\NumericUpDownLib.csproj
-
-      # - name: Restore Strong Name Key
-        # run: |
-        #   echo "${{ secrets.STRONG_NAME_KEY }}" | base64 --decode > NumericUpDownLibKeyPair.snk
 
       - name: Restore Strong Name Key
         run: |
@@ -69,33 +43,8 @@ jobs:
       - name: Build
         run: dotnet build source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-restore
 
-      # - name: Build (.NET Core)
-      #   if: matrix.dotnet.type == 'sdk'
-      #   run: dotnet build source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-restore
-
-      # - name: Build (.NET Framework)
-      #   if: matrix.dotnet.type == 'framework'
-      #   run: msbuild.exe source\NumericUpDownLib\NumericUpDownLib.csproj /p:platform="Any CPU" /p:configuration="Release" /t:pack
-
       # - name: Test
       #   run: dotnet test --configuration Release --no-build
-
-     # - name: Pack (.NET Core)
-     #   run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build
-        #run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
-
-      # - name: Pack (.NET Framework)
-      #   run: dotnet pack source\NumericUpDownLib\NumericUpDownLib.csproj --configuration Release --no-build -o ./artifacts
-
-      # - name: Publish to NuGet
-        # run: dotnet nuget push "./artifacts/*.nupkg" \
-        #       --api-key ${{ secrets.NUGET_API_KEY }} \
-        #       --source https://api.nuget.org/v3/index.json
-
-        # Push the package
-      #- name: NuGet push
-        #run: dotnet nuget push nupkg/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        # run: dotnet nuget push "./artifacts/***.NumericUpDownLib.3.5.1.nupkg" --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: push to NuGet
         # Only push to NuGet if we're building a tag (optional)

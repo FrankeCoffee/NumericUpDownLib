@@ -1,5 +1,3 @@
-<!-- [![Build status](https://img.shields.io/appveyor/ci/Dirkster99/NumericUpDownLib.svg)](https://ci.appveyor.com/project/Dirkster99/NumericUpDownLib) -->
-<!-- [![Build status](https://ci.appveyor.com/api/projects/status/35rwxjk9700x4ovb?svg=true)](https://ci.appveyor.com/project/Dirkster99/numericupdownlib) -->
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/FrankeCoffee/NumericUpDownLib/build.yml)
 [![Release](https://img.shields.io/github/release/FrankeCoffee/NumericUpDownLib.svg)](https://github.com/FrankeCoffee/NumericUpDownLib/releases/latest)
 [![NuGet](https://img.shields.io/nuget/dt/FrankeCsTools.NumericUpDownLib.svg)](http://nuget.org/packages/FrankeCsTools.NumericUpDownLib)
@@ -17,6 +15,8 @@
 ## Fork
 
 This is a fork of [NumericUpDownLib](https://github.com/Dirkster99/NumericUpDownLib)
+
+---
 
 ## Fixes and Features Added in Version 3.4
 
