@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Demo/">
+    <Project Path="Demo/UpDownDemoLib/UpDownDemoLib.csproj" Id="ed3a742d-4055-4da2-bbce-74e817b211bf" />
+  </Folder>
+  <Folder Name="/Demo/MLibTest/" />
+  <Folder Name="/Demo/MLibTest/Components/">
+    <Project Path="Demo/MLibTest/Components/ServiceLocator/ServiceLocator.csproj" Id="252126d1-e1d9-49c3-910b-fcf2266265ef" />
+    <Project Path="Demo/MLibTest/Components/Settings/Settings/Settings.csproj" Id="2807b493-cc2e-402e-901a-eb138698fedc" />
+    <Project Path="Demo/MLibTest/Components/Settings/SettingsModel/SettingsModel.csproj" Id="9b0ba841-5a2f-4ed3-a908-253dbca70e77" />
+  </Folder>
+  <Folder Name="/Other files/">
+    <File Path="../.github/workflows/build.yml" />
+    <File Path="../License.md" />
+    <File Path="../Readme.md" />
+  </Folder>
+  <Project Path="NumericUpDownLib/NumericUpDownLib.csproj" />
+  <Project Path="NUnitTestProject/NUnitTestProject.csproj" />
+  <Project Path="TestGenerics/TestGenerics.csproj" Id="bdbb3d84-0268-43e2-bbc6-f5ca2068262e" />
+  <Project Path="TestThemes/TestThemes.csproj" Id="58bd0e02-6bff-43f0-9b93-d3371e97794b" />
+</Solution>

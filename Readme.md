@@ -1,16 +1,17 @@
+# NumericUpDownLib
+
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/FrankeCoffee/NumericUpDownLib/build.yml)
-[![Release](https://img.shields.io/github/release/FrankeCoffee/NumericUpDownLib.svg)](https://github.com/FrankeCoffee/NumericUpDownLib/releases/latest)
+<!-- [![Release](https://img.shields.io/github/release/FrankeCoffee/NumericUpDownLib.svg)](https://github.com/FrankeCoffee/NumericUpDownLib/releases/latest) -->
+[![NuGet version (FrankeCsTools.NumericUpDownLib)](https://img.shields.io/nuget/v/FrankeCsTools.NumericUpDownLib.svg)](https://www.nuget.org/packages/FrankeCsTools.NumericUpDownLib/)
 [![NuGet](https://img.shields.io/nuget/dt/FrankeCsTools.NumericUpDownLib.svg)](http://nuget.org/packages/FrankeCsTools.NumericUpDownLib)
 
 ![Net481](https://badgen.net/badge/Framework/.Net&nbsp;4.8.1/blue) ![NetCore10](https://badgen.net/badge/Framework/NetCore&nbsp;10/blue)
 
-# Overview
-
 ## Version 3.5
 
- - Update to .NET 4.8.1 and .NET 10
- - Signed with Strong Name
- - Available as NuGet package [FrankeCsTools.NumericUpDownLib](http://nuget.org/packages/FrankeCsTools.NumericUpDownLib)
+- Update to .NET 4.8.1 and .NET 10
+- Signed with Strong Name
+- Available as NuGet package [FrankeCsTools.NumericUpDownLib](http://nuget.org/packages/FrankeCsTools.NumericUpDownLib)
 
 ## Fork
 
@@ -106,6 +107,7 @@ Thanx for contributing go to [heartacker](https://github.com/heartacker) :pray:
 ## More Features
 
 This library implements numeric up down WPF controls to edit a value:
+
 - by dragging the mouse vertically/horizontally (see recording below) or
 - by clicking up/down arrow (repeat) buttons or
 - up/down or left right cursor keys or
@@ -132,11 +134,13 @@ Percentages can be edit at [0-100] while backend viewmodels handles [0-1] values
 see FactorToDoubleConverter and PercentageUpDownDemo in demo clients at project site.
 
 Controls are fully themeable. Project site contains demos for:
+
 - Dark/Light theme and
 - Generics theme
 test clients.
 
 More Features:
+
 - Small Increments and Decrements can be configured to be 1 or any greater value than 1.
 - Large Small Increments and Decrements can be configured to be 10 or any other value greater 1.
 - The width of the control can be configured to be fixed (textbox will scroll inside when text is too large)
@@ -146,12 +150,14 @@ More Features:
 - SelectAll on GotFocus of TextBox
 - IsReadOnly property disables the textbox portion but leaves all other funtions for Increment/Decrement available
 
-# LargeStepSize and StepSize
+## LargeStepSize and StepSize
+
 There are mouse and keyboard input methods that support 2 different configurable increment/decrement values.
 
 ## Mouse Drag Mode
 
 The user can hover the mouse over the textbox portion of the control and:
+
 - left click/drag vertically or
 - left click/drag horizontally
 
@@ -160,6 +166,7 @@ to change the current value with the size configured in *StepSize* or *LargeStep
 ## Mouse Wheel
 
 The user can hover the mouse over the textbox portion and spin the mouse wheel with:
+
 - no modifier key pressed or
 - a modifier key pressed
 
@@ -171,6 +178,7 @@ The modifier key for changing the value with *LargeStepSize* can be configured i
 ## Cursor Keys
 
 The user can click into the textbox portion of the control and:
+
 - press cursor left or right or
 - press cursor up and down
 
@@ -204,6 +212,7 @@ Load *Light* or *Dark* brush resources in you resource dictionary to take advant
 ```
 
 These definitions do not theme all controls used within this library. You should use a standard theming library, such as:
+
 - [MahApps.Metro](https://github.com/MahApps/MahApps.Metro),
 - [MLib](https://github.com/Dirkster99/MLib), or
 - [MUI](https://github.com/firstfloorsoftware/mui)
